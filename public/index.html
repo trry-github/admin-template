@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <style>
+        #app {
+            height: 100%;
+        }
+
+        .loader {
+            position: fixed;
+            width: 45px;
+            height: 45px;
+            top: 50%;
+            left: 50%;
+            transform-origin: center;
+            transform: translate3d(-50%, -50%, 0) rotate(45deg);
+            z-index: 10;
+            font-size: 0;
+        }
+
+        .loader .circle {
+            position: relative;
+            top: 50%;
+            opacity: 0;
+            animation-iteration-count: infinite;
+            animation-name: orbit;
+            animation-duration: 6s;
+        }
+
+        .loader .circle:after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(0, 153, 255, 1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, .7);
+            transform-origin: center center;
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        .loader .circle:nth-child(2) {
+            animation-delay: 250ms;
+        }
+
+        .loader .circle:nth-child(3) {
+            animation-delay: 500ms;
+        }
+
+        .loader .circle:nth-child(4) {
+            animation-delay: 750ms;
+        }
+
+        .loader .circle:nth-child(5) {
+            animation-delay: 1000ms;
+        }
+
+        .loader .circle:nth-child(6) {
+            animation-delay: 1250ms;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(225deg);
+                opacity: 1;
+                animation-timing-function: ease-out;
+            }
+
+            7% {
+                transform: rotate(345deg);
+                animation-timing-function: linear;
+            }
+
+            30% {
+                transform: rotate(455deg);
+                animation-timing-function: ease-in-out;
+            }
+
+            39% {
+                transform: rotate(690deg);
+                animation-timing-function: linear;
+            }
+
+            70% {
+                transform: rotate(815deg);
+                opacity: 1;
+                animation-timing-function: ease-out;
+            }
+
+            75% {
+                transform: rotate(945deg);
+                animation-timing-function: ease-out;
+            }
+
+            76% {
+                transform: rotate(945deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: rotate(945deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+                Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+        <div class='loader'>
+            <div class='circle'></div>
+            <div class='circle'></div>
+            <div class='circle'></div>
+            <div class='circle'></div>
+            <div class='circle'></div>
+            <div class='circle'></div>
+        </div>
+    </div>
+    <!-- built files will be auto injected -->
+    <% if (htmlWebpackPlugin.options.debugTool=='eruda' ) { %>
+        <script src="https://cdn.jsdelivr.net/npm/eruda/eruda.min.js"></script>
+        <script>eruda.init();</script>
+    <% } %>
+    <% if (htmlWebpackPlugin.options.debugTool=='vconsole' ) { %>
+        <script src="https://cdn.jsdelivr.net/npm/vconsole/dist/vconsole.min.js"></script>
+        <script>new VConsole();</script>
+    <% } %>
+</body>
+
+</html>
